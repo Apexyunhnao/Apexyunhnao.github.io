@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>黄文浩 · AI Agent 工程</title>
+<meta name="description" content="RAG 检索、Agent 编排、本地化部署。记录实测数据与踩过的坑。">
+<style>
+  :root{
+    --bg:#0d1117; --bg2:#161b22; --fg:#e6edf3; --dim:#8b949e;
+    --line:#30363d; --accent:#58a6ff; --ok:#3fb950;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--bg); color:var(--fg);
+    font:16px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:760px; margin:0 auto; padding:0 24px}
+  a{color:var(--accent); text-decoration:none}
+  a:hover{text-decoration:underline}
+  code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace; font-size:.9em;
+       background:var(--bg2); padding:1px 5px; border-radius:4px}
+
+  header{padding:72px 0 40px; border-bottom:1px solid var(--line)}
+  h1{font-size:32px; margin:0 0 10px; letter-spacing:-.5px}
+  .tagline{color:var(--dim); font-size:17px; margin:0}
+  .meta{margin-top:18px; color:var(--dim); font-size:14px}
+  .meta a{color:var(--dim); border-bottom:1px dotted var(--line)}
+  .meta a:hover{color:var(--accent); text-decoration:none}
+
+  section{padding:44px 0; border-bottom:1px solid var(--line)}
+  section:last-of-type{border-bottom:none}
+  h2{font-size:14px; text-transform:uppercase; letter-spacing:1.4px;
+     color:var(--dim); margin:0 0 22px; font-weight:600}
+
+  .card{background:var(--bg2); border:1px solid var(--line); border-radius:10px;
+        padding:20px 22px; margin-bottom:14px; transition:border-color .15s}
+  .card:hover{border-color:#3d444d}
+  .card h3{margin:0 0 8px; font-size:17px; font-weight:600}
+  .card h3 a{color:var(--fg)}
+  .card h3 a:hover{color:var(--accent); text-decoration:none}
+  .card p{margin:0 0 12px; color:var(--dim); font-size:14.5px}
+  .stats{display:flex; flex-wrap:wrap; gap:8px; font-size:12.5px}
+  .stat{background:rgba(88,166,255,.1); color:var(--accent);
+        border:1px solid rgba(88,166,255,.25); border-radius:5px; padding:2px 9px}
+  .stat.ok{background:rgba(63,185,80,.1); color:var(--ok); border-color:rgba(63,185,80,.25)}
+
+  footer{padding:36px 0 64px; color:var(--dim); font-size:13.5px}
+  .note{font-size:13px; color:var(--dim); margin-top:10px; font-style:normal}
+
+  @media(max-width:600px){
+    header{padding:48px 0 32px}
+    h1{font-size:26px}
+    .wrap{padding:0 18px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>黄文浩</h1>
+  <p class="tagline">AI Agent 工程 · RAG 检索 · 本地化部署</p>
+  <div class="meta">
+    <a href="https://github.com/Apexyunhnao">GitHub</a> ·
+    <a href="posts/sensitive-rag-local.html">最新文章：企业内网 RAG 的三个真相</a>
+  </div>
+</header>
+
+<section>
+  <h2>我在做什么</h2>
+  <p style="color:var(--dim); margin:0">
+    做能跑起来、能量化、能说清边界的 Agent 系统。偏好简单架构，关心实际效果而不是技术栈的复杂度。
+    每个项目都留了评估数据和已知限制——因为「跑通了」和「能用」是两件事。
+  </p>
+</section>
+
+<section>
+  <h2>项目</h2>
+
+  <div class="card">
+    <h3><a href="https://github.com/Apexyunhnao/sensitive-rag-local">内网敏感数据 RAG · 本地模型 + 权限网关 + 审计</a></h3>
+    <p>数据不出内网场景的完整链路：Dify + Ollama 本地模型，分密级知识库 + 网关按身份路由，行为审计不记原文。</p>
+    <div class="stats">
+      <span class="stat ok">表格问答 4/4</span>
+      <span class="stat">4 份真实港股公告</span>
+      <span class="stat">越权 403 / 无效令牌 401</span>
+      <span class="stat">零外发验证</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3><a href="https://github.com/Apexyunhnao/rag-agent">知识库问答 Agent</a></h3>
+    <p>LlamaIndex + ChromaDB + BGE-small，混合检索与来源引用，含留出集评估。</p>
+    <div class="stats">
+      <span class="stat ok">检索 100%（20 条用例）</span>
+      <span class="stat ok">回答 95.0%</span>
+      <span class="stat">留出集验证</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3><a href="https://github.com/Apexyunhnao/customer-service-agent">客服工单 Agent</a></h3>
+    <p>LangGraph + DeepSeek，分类与行动决策，59 条标注用例，含安全边界设计。</p>
+    <div class="stats">
+      <span class="stat ok">分类 98.3%</span>
+      <span class="stat ok">行动 100%</span>
+      <span class="stat">59 条标注用例</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3><a href="https://github.com/Apexyunhnao/orchestrator-agent">多 Agent 编排</a></h3>
+    <p>LangGraph Supervisor 模式，统一入口分发到专业 Agent，异常回退与状态管理。</p>
+    <div class="stats">
+      <span class="stat">Supervisor 架构</span>
+      <span class="stat">异常回退</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3><a href="https://github.com/Apexyunhnao/self-healing-agent">本地服务自愈 Agent</a></h3>
+    <p>监控本地服务状态，异常时自动诊断与恢复。</p>
+    <div class="stats">
+      <span class="stat">进程监控</span>
+      <span class="stat">自动恢复</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>技术文章</h2>
+  <div class="card">
+    <h3><a href="posts/sensitive-rag-local.html">企业内网 RAG 的三个真相：表格解析、权限隔离、审计</a></h3>
+    <p>
+      4 份真实港股公告，pdfplumber 表格识别 0 个；Dify 社区版做不了库内按人隔离；
+      「审计只存哈希」被数据库自己的表打穿。每一条都带实测数据。
+    </p>
+    <div class="stats">
+      <span class="stat">实测数据</span>
+      <span class="stat">踩坑记录</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p style="margin:0">© 2026 黄文浩 · 用 GitHub Pages 托管</p>
+  <p class="note">本站内容均为个人技术实践记录，其中项目数据来自本地实测；涉及的文档内容为虚构样例或公开披露文件。</p>
+</footer>
+
+</div>
+</body>
+</html>
