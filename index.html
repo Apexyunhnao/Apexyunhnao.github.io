@@ -81,7 +81,19 @@
   .shot{margin:18px 0 0; border:1px solid var(--line); border-radius:8px; overflow:hidden; background:#0f1216}
   .shot img{display:block; width:100%; height:auto; opacity:.95}
   .shot img:hover{opacity:1}
+  .shot a{display:block; border-bottom:none}
   .shot-cap{font-family:var(--mono); font-size:11.5px; color:var(--faint); padding:8px 12px; border-top:1px solid var(--line)}
+
+  .more-shot{margin-top:12px}
+  .more-shot summary{
+    cursor:pointer; font-family:var(--mono); font-size:12.5px; color:var(--dim);
+    padding:9px 12px; border:1px solid var(--line); border-radius:6px; list-style:none;
+    transition:color .15s, border-color .15s;
+  }
+  .more-shot summary::-webkit-details-marker{display:none}
+  .more-shot summary:hover{color:var(--accent); border-color:#2a3038}
+  .more-shot summary::before{content:"+ "; color:var(--faint)}
+  .more-shot[open] summary::before{content:"− "}
 
   .limit{
     margin-top:14px; padding:11px 14px; border-left:2px solid #2a3038;
@@ -165,7 +177,7 @@
       <h2><a href="https://github.com/Apexyunhnao/sensitive-rag-local">内网敏感数据 RAG · 本地模型 + 分密级权限 + 审计</a></h2>
       <p class="what">
         合规专员做季度关联交易审查：港交所公告每份 80 多页，表格没有框线、扫描版用 Ctrl+F 搜不到，
-        人工翻要一小时还容易漏。这个系统让<b>本地模型直接读原文</b>，按身份路由到对应密级的知识库，
+        人工翻一遍要几十分钟、还容易漏。这个系统让<b>本地模型直接读原文</b>，按身份路由到对应密级的知识库，
         回答时给出条款原文和相似度；数据不出内网，审计只记行为不存原文。
       </p>
       <div class="facts">
@@ -175,13 +187,20 @@
         <span>飞书真实接入</span>
       </div>
       <div class="shot">
-        <img src="assets/screenshots/rag-ask.png" alt="知识库问答界面：按身份路由，回答附条款来源与相似度" loading="lazy">
-        <div class="shot-cap">问答：身份 → 组 → 密级知识库，回答带来源与相似度</div>
+        <a href="assets/screenshots/rag-ask.png" target="_blank" rel="noopener">
+          <img src="assets/screenshots/rag-ask.png" alt="知识库问答界面：按身份路由，回答附条款来源与相似度" loading="lazy">
+        </a>
+        <div class="shot-cap">问答：身份 → 组 → 密级知识库，回答带来源与相似度（点击看原图）</div>
       </div>
-      <div class="shot" style="margin-top:10px">
-        <img src="assets/screenshots/rag-diff.png" alt="合同比对界面：条款级差异，关键变更标红并高亮变化词" loading="lazy">
-        <div class="shot-cap">合同比对：13 → 14 条，6 处关键变更，0.04 秒，纯本地</div>
-      </div>
+      <details class="more-shot">
+        <summary>合同比对的界面长什么样</summary>
+        <div class="shot" style="margin-top:10px">
+          <a href="assets/screenshots/rag-diff.png" target="_blank" rel="noopener">
+            <img src="assets/screenshots/rag-diff.png" alt="合同比对界面：条款级差异，关键变更标红并高亮变化词" loading="lazy">
+          </a>
+          <div class="shot-cap">合同比对：13 → 14 条，6 处关键变更，0.04 秒，纯本地</div>
+        </div>
+      </details>
       <div class="limit">
         <b>已知边界</b>4 份公告、20 道表格题是小样本；只处理「空白对齐 + 两张表头」这一种表格，
         有框线、合并单元格、跨页还没做；没测过并发。
