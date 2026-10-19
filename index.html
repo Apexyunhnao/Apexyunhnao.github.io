@@ -23,7 +23,7 @@
     -webkit-font-smoothing:antialiased;
     font-feature-settings:"tnum";
   }
-  .wrap{max-width:680px; margin:0 auto; padding:0 28px}
+  .wrap{max-width:720px; margin:0 auto; padding:0 28px}
   a{color:var(--fg); text-decoration:none; border-bottom:1px solid var(--line)}
   a:hover{color:var(--accent); border-bottom-color:var(--accent)}
   .mono{font-family:var(--mono); font-size:.86em}
@@ -38,65 +38,101 @@
   }
   h1 .en{color:var(--faint); font-weight:400; font-size:.52em; letter-spacing:0; display:block; margin-top:8px}
   .lede{
-    font-size:17px; color:var(--dim); max-width:560px;
-    margin:20px 0 0;
+    font-size:17px; color:var(--dim); max-width:580px;
+    margin:20px 0 0; line-height:1.65;
   }
   .lede strong{color:var(--fg); font-weight:550}
+  .lede + .lede{margin-top:14px}
   .links{margin:26px 0 0; display:flex; gap:22px; font-family:var(--mono); font-size:13.5px}
   .links a{border-bottom:none; color:var(--dim)}
   .links a:hover{color:var(--accent)}
 
   /* ---------- 区块 ---------- */
-  section{margin-top:72px}
+  section{margin-top:84px}
   .sec-head{
     font-family:var(--mono); font-size:11.5px; letter-spacing:1.8px;
     text-transform:uppercase; color:var(--faint);
     padding-bottom:12px; border-bottom:1px solid var(--line);
-    margin-bottom:2px;
+    margin-bottom:6px;
   }
 
-  /* ---------- 项目列表（编号，非卡片） ---------- */
+  /* ---------- 主项目 ---------- */
   .item{
     display:grid; grid-template-columns:34px 1fr; gap:18px;
-    padding:26px 0; border-bottom:1px solid var(--line);
+    padding:32px 0; border-bottom:1px solid var(--line);
   }
   .item:last-child{border-bottom:none}
   .num{
     font-family:var(--mono); font-size:12px; color:var(--faint);
     padding-top:5px; letter-spacing:.5px;
   }
-  .item h2{font-size:19px; line-height:1.4; font-weight:600; letter-spacing:-.2px}
-  .item h2 a{border-bottom:none}
+  .item h2{font-size:19px; line-height:1.4; font-weight:600; letter-spacing:-.3px}
+  .item h2 a{border-bottom:none; transition:color .15s ease}
   .item h2 a:hover{color:var(--accent)}
-  .item .what{color:var(--dim); font-size:14.5px; margin-top:7px; max-width:520px}
+  .item .what{color:var(--dim); font-size:14.5px; margin-top:10px; max-width:600px; line-height:1.7}
+  .item .what b{color:var(--fg); font-weight:550}
   .facts{
-    margin-top:11px; font-family:var(--mono); font-size:12.5px;
-    color:var(--faint); display:flex; flex-wrap:wrap; gap:0 18px;
+    margin-top:14px; font-family:var(--mono); font-size:13.5px;
+    color:var(--dim); display:flex; flex-wrap:wrap; gap:0 18px;
+    line-height:1.75;
   }
-  .facts .hi{color:var(--accent)}
+  .facts .hi{color:var(--accent); font-weight:600}
+
+  .shot{margin:18px 0 0; border:1px solid var(--line); border-radius:8px; overflow:hidden; background:#0f1216}
+  .shot img{display:block; width:100%; height:auto; opacity:.95}
+  .shot img:hover{opacity:1}
+  .shot-cap{font-family:var(--mono); font-size:11.5px; color:var(--faint); padding:8px 12px; border-top:1px solid var(--line)}
+
+  .limit{
+    margin-top:14px; padding:11px 14px; border-left:2px solid #2a3038;
+    font-size:13px; color:var(--dim); line-height:1.7; background:#0e1114;
+    border-radius:0 6px 6px 0;
+  }
+  .limit b{color:var(--faint); font-weight:600; font-family:var(--mono); font-size:11.5px;
+    letter-spacing:.06em; text-transform:uppercase; margin-right:8px}
+
+  /* ---------- 其他实践 ---------- */
+  .more{list-style:none; margin-top:6px}
+  .more li{
+    padding:18px 0; border-bottom:1px solid var(--line);
+    display:grid; grid-template-columns:1fr auto; gap:14px; align-items:baseline;
+  }
+  .more li:last-child{border-bottom:none}
+  .more .t{font-size:15px; font-weight:550}
+  .more .d{color:var(--dim); font-size:13.5px; margin-top:5px; line-height:1.65; max-width:560px}
+  .more .tag{font-family:var(--mono); font-size:11.5px; color:var(--faint); white-space:nowrap}
 
   /* ---------- 文章 ---------- */
-  .post{display:block; padding:26px 0; border-bottom:1px solid var(--line)}
+  .post{display:block; padding:28px 0; border-bottom:1px solid var(--line); transition:color .15s ease}
   .post:hover{color:inherit}
-  .post h2{font-size:19px; font-weight:600; line-height:1.45; letter-spacing:-.2px}
+  .post h2{font-size:19px; font-weight:600; line-height:1.45; letter-spacing:-.3px; transition:color .15s ease}
   .post:hover h2{color:var(--accent)}
   .post .meta{margin-top:8px; font-family:var(--mono); font-size:12.5px; color:var(--faint)}
-  .post .what{color:var(--dim); font-size:14.5px; margin-top:8px; max-width:530px}
+  .post .what{color:var(--dim); font-size:14.5px; margin-top:8px; max-width:560px; line-height:1.65}
 
   /* ---------- 页脚 ---------- */
   footer{
-    margin-top:80px; padding:26px 0 90px; border-top:1px solid var(--line);
+    margin-top:90px; padding:28px 0 100px; border-top:1px solid var(--line);
     font-family:var(--mono); font-size:12px; color:var(--faint); line-height:1.9;
   }
-  footer a{border-bottom:none; color:var(--faint)}
+  footer a{border-bottom:none; color:var(--faint); transition:color .15s ease}
   footer a:hover{color:var(--accent)}
 
   @media(max-width:600px){
     .wrap{padding:0 20px}
     header{padding-top:56px}
     h1{font-size:30px}
-    .item{grid-template-columns:26px 1fr; gap:12px}
-    section{margin-top:56px}
+    .lede{font-size:16px}
+    .item{grid-template-columns:26px 1fr; gap:12px; padding:26px 0}
+    .item h2{font-size:18px}
+    .item .what{font-size:14px}
+    .facts{font-size:12.5px; margin-top:12px}
+    .more li{grid-template-columns:1fr; gap:4px}
+    section{margin-top:64px}
+    .post{padding:24px 0}
+    .post h2{font-size:18px}
+    .post .what{font-size:14px}
+    footer{margin-top:72px; padding:24px 0 80px}
   }
 </style>
 </head>
@@ -107,8 +143,10 @@
   <h1>黄文浩<span class="en">AI Agent 工程</span></h1>
   <p class="lede">
     做 <strong>RAG 检索</strong>、<strong>Agent 编排</strong>和 <strong>本地化部署</strong>。
-    写代码之前先算清楚成本和边界，交付时带上评估数据和已知限制——
-    「跑通了」和「能用」是两件事。
+    写代码之前先算清楚成本和边界。
+  </p>
+  <p class="lede">
+    交付时带上评估数据和已知限制——跑通了和能用是两件事。
   </p>
   <div class="links">
     <a href="https://github.com/Apexyunhnao">GitHub ↗</a>
@@ -118,70 +156,100 @@
 </header>
 
 <section id="projects">
-  <div class="sec-head">项目 · 05</div>
+  <div class="sec-head">项目 · 02</div>
 
+  <!-- 01 -->
   <div class="item">
     <div class="num">01</div>
     <div>
-      <h2><a href="https://github.com/Apexyunhnao/sensitive-rag-local">内网敏感数据 RAG · 本地模型 + 权限网关 + 审计</a></h2>
-      <p class="what">数据不出内网场景的完整链路：Dify + Ollama 本地模型，分密级知识库 + 网关按身份路由，审计只记行为。</p>
+      <h2><a href="https://github.com/Apexyunhnao/sensitive-rag-local">内网敏感数据 RAG · 本地模型 + 分密级权限 + 审计</a></h2>
+      <p class="what">
+        合规专员做季度关联交易审查：港交所公告每份 80 多页，表格没有框线、扫描版用 Ctrl+F 搜不到，
+        人工翻要一小时还容易漏。这个系统让<b>本地模型直接读原文</b>，按身份路由到对应密级的知识库，
+        回答时给出条款原文和相似度；数据不出内网，审计只记行为不存原文。
+      </p>
       <div class="facts">
-        <span class="hi">表格问答 4/4</span>
+        <span class="hi">表格问答 20/20</span>
         <span>4 份真实港股公告</span>
         <span>越权 403 / 无效令牌 401</span>
+        <span>飞书真实接入</span>
+      </div>
+      <div class="shot">
+        <img src="assets/screenshots/rag-ask.png" alt="知识库问答界面：按身份路由，回答附条款来源与相似度" loading="lazy">
+        <div class="shot-cap">问答：身份 → 组 → 密级知识库，回答带来源与相似度</div>
+      </div>
+      <div class="shot" style="margin-top:10px">
+        <img src="assets/screenshots/rag-diff.png" alt="合同比对界面：条款级差异，关键变更标红并高亮变化词" loading="lazy">
+        <div class="shot-cap">合同比对：13 → 14 条，6 处关键变更，0.04 秒，纯本地</div>
+      </div>
+      <div class="limit">
+        <b>已知边界</b>4 份公告、20 道表格题是小样本；只处理「空白对齐 + 两张表头」这一种表格，
+        有框线、合并单元格、跨页还没做；没测过并发。
       </div>
     </div>
   </div>
 
+  <!-- 02 -->
   <div class="item">
     <div class="num">02</div>
     <div>
-      <h2><a href="https://github.com/Apexyunhnao/rag-agent">知识库问答 Agent</a></h2>
-      <p class="what">LlamaIndex + ChromaDB + BGE-small，混合检索与来源引用，带留出集评估。</p>
+      <h2><a href="https://github.com/Apexyunhnao/self-healing-agent">本地服务自愈 Agent · 策略门 + 确定性验证</a></h2>
+      <p class="what">
+        开发机上跑着 HTTP 服务、消息网关和调试浏览器，挂了靠人发现、手动重启。
+        这个 Agent 持续探测，故障时诊断根因，<b>修复动作必须过确定性策略门</b>，
+        最后由验证器证明真的恢复；修不好自动重试，预算耗尽升级人工。
+        核心实验结论：LLM 只比规则多修好 1 个场景，<b>所以推荐 Rule-only 运行</b>。
+      </p>
       <div class="facts">
-        <span class="hi">检索 100%</span>
-        <span class="hi">回答 95.0%</span>
-        <span>20 条标注用例 + 留出集</span>
+        <span class="hi">检测 28/28 = 100%</span>
+        <span class="hi">Unsafe 修复 0/34</span>
+        <span>35 场景 + 6 盲评</span>
+        <span>127 单测 + CI</span>
+      </div>
+      <div class="shot">
+        <img src="assets/screenshots/selfheal.png" alt="自愈 Agent 监控面板：指标卡、Rule vs LLM 对比、故障状态流转链" loading="lazy">
+        <div class="shot-cap">监控面板：Rule vs LLM 同测试集对比 + 每次故障的状态流转</div>
+      </div>
+      <div class="limit">
+        <b>已知边界</b>场景是本机开发机，不是生产环境；上生产要补变更审批、失败回滚、多实例分布式锁；
+        35 个场景没覆盖网络分区、磁盘写满、内存泄漏、数据库死锁。
       </div>
     </div>
   </div>
+</section>
 
-  <div class="item">
-    <div class="num">03</div>
-    <div>
-      <h2><a href="https://github.com/Apexyunhnao/customer-service-agent">客服工单 Agent</a></h2>
-      <p class="what">LangGraph + DeepSeek，工单分类与行动决策，含安全边界设计。</p>
-      <div class="facts">
-        <span class="hi">分类 98.3%</span>
-        <span class="hi">行动 100%</span>
-        <span>59 条标注用例</span>
+<section id="more">
+  <div class="sec-head">其他工程实践</div>
+  <ul class="more">
+    <li>
+      <div>
+        <div class="t">电商平台 + AI 客服（单商家 B2C）</div>
+        <div class="d">Java 21 后端 + Vue 3 前端 + 知识库/工单/编排三个 Agent 服务；AI 只建议不写业务表，退款走人工审批，提供方熔断与降级链。技术密度最高，但品牌与订单是虚构的，不作为主项目展示。</div>
       </div>
-    </div>
-  </div>
-
-  <div class="item">
-    <div class="num">04</div>
-    <div>
-      <h2><a href="https://github.com/Apexyunhnao/orchestrator-agent">多 Agent 编排</a></h2>
-      <p class="what">LangGraph Supervisor 模式，统一入口分发到专业 Agent，含异常回退与状态管理。</p>
-      <div class="facts">
-        <span>Supervisor 架构</span>
-        <span>异常回退</span>
+      <div class="tag">227 commits · 私有</div>
+    </li>
+    <li>
+      <div>
+        <div class="t">办公流程自动化（n8n + 飞书）</div>
+        <div class="d">多维表格提交 → 按规则分类 → 群机器人通知 → 回写状态，在真实飞书环境跑通；另有收件箱自动处理（去重、合并、出 Excel 汇总）。</div>
       </div>
-    </div>
-  </div>
-
-  <div class="item">
-    <div class="num">05</div>
-    <div>
-      <h2><a href="https://github.com/Apexyunhnao/self-healing-agent">本地服务自愈 Agent</a></h2>
-      <p class="what">监控本地服务状态，异常时自动诊断并恢复。</p>
-      <div class="facts">
-        <span>进程监控</span>
-        <span>自动恢复</span>
+      <div class="tag">n8n 2.42 · 已上线</div>
+    </li>
+    <li>
+      <div>
+        <div class="t">多 AI 协作护栏</div>
+        <div class="d">策略门 → 隔离工作区 → 尝试台账 → 独立验证 → 人工门 → 不可变 done；9 态状态机，三道 fail-closed 闸门，记录 5 个真实踩坑。</div>
       </div>
-    </div>
-  </div>
+      <div class="tag">6.5k 行</div>
+    </li>
+    <li>
+      <div>
+        <div class="t">个人决策知识库</div>
+        <div class="d">2.3 万张方法论卡片，FTS5 + 向量混合检索 + RRF 融合，对抗集 Hit@10 94.2%；作为外部记忆接进本地 Agent。</div>
+      </div>
+      <div class="tag">Hit@10 94.2%</div>
+    </li>
+  </ul>
 </section>
 
 <section id="writing">
